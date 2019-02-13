@@ -1,6 +1,6 @@
 import asyncio
 from asyncio.base_events import BaseEventLoop
-from concurrent.futures import Executor, ProcessPoolExecutor
+from concurrent.futures import Executor, ThreadPoolExecutor
 from datetime import datetime
 from enum import Enum
 from functools import lru_cache, partial, wraps
@@ -429,7 +429,7 @@ def main(
         )
     else:
         loop = asyncio.get_event_loop()
-        executor = ProcessPoolExecutor(max_workers=os.cpu_count())
+        executor = ThreadPoolExecutor(max_workers=1)
         try:
             loop.run_until_complete(
                 schedule_formatting(
