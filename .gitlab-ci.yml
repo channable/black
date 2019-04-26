@@ -20,3 +20,7 @@ run_black:
 typecheck:
   script:
     - "pipenv run mypy black.py blackd.py tests/test_black.py"
+
+unit_tests:
+  script:
+    - "coverage run tests/test_black.py"
