@@ -5,9 +5,9 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 
-    containers:
-      - name: main
-        image: python/3.6-alpine
+  containers:
+    - name: main
+      image: python/3.6-alpine
 
 blocks:
   - name: "Install"
