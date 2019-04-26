@@ -1,4 +1,4 @@
-image: python:3.6-stretch
+image: "python:3.6-stretch"
 
 variables:
   PIPENV_VENV_IN_PROJECT: "true"
@@ -9,9 +9,9 @@ cache:
     - ".venv/"
 
 before_script:
-  - pip install pipenv
-  - pipenv sync --dev
+  - "pip install pipenv"
+  - "pipenv sync --dev"
 
 run_black:
   script:
-    - pipenv run black .
+    - "pipenv run black ."
