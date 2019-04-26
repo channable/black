@@ -9,7 +9,7 @@ blocks:
   - name: "Install"
     task:
       env_vars:
-        - name: PIPENV_ENV_IN_PROJECT
+        - name: PIPENV_VENV_IN_PROJECT
           value: "true"
       prologue:
         commands:
@@ -25,7 +25,7 @@ blocks:
   - name: "Tests"
     task:
       env_vars:
-        - name: PIPENV_ENV_IN_PROJECT
+        - name: PIPENV_VENV_IN_PROJECT
           value: "true"
       prologue:
         commands:
