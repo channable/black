@@ -7,7 +7,7 @@ agent:
 
   containers:
     - name: main
-      image: python/3.6-alpine
+      image: python:3.6-alpine
 
 blocks:
   - name: "Install"
