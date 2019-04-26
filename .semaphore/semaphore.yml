@@ -1,4 +1,4 @@
-versione v1.0
+version: v1.0
 name: Black pipeline
 agent:
   machine:
