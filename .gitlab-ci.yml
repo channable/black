@@ -1,0 +1,12 @@
+image: python:3.6-stretch
+
+variables:
+  PIPENV_VENV_IN_PROJECT: "true"
+
+before_script:
+  - pip install pipenv
+  - pipenv sync --dev
+
+run_black:
+  script:
+    - pipenv run black .
