@@ -12,16 +12,18 @@ cache:
 
 before_script:
   - "pip install pipenv"
-  - "pipenv sync --dev"
 
 run_black:
   script:
+    - "pipenv sync --dev"
     - "pipenv run black ."
 
 typecheck:
   script:
+    - "pipenv sync --dev"
     - "pipenv run mypy black.py blackd.py tests/test_black.py"
 
 unit_tests:
   script:
+    - "pipenv sync --dev"
     - "pipenv run coverage run tests/test_black.py"
