@@ -35,5 +35,5 @@ blocks:
       jobs:
       - name: Run tests
         commands:
-          - coverage run tests/test_black.py
-          - coveralls
+          - pipenv run coverage run tests/test_black.py
+          - pipenv run coveralls
