@@ -1,4 +1,4 @@
-version: v1.0
+versione v1.0
 name: Black pipeline
 agent:
   machine:
@@ -8,18 +8,31 @@ blocks:
   - name: "Install"
     task:
       env_vars:
-        - name: APP_ENV
-          value: prod
-      jobs:
-      - name: Install dependencies
+        - name: PIPENV_ENV_IN_PROJECT
+          value: "true"
+      prologue:
         commands:
-          - sudo -H pip install --upgrade pip setuptools
-          - sudo -H pip install coverage coveralls flake8 flake8-bugbear mypy
+          - sudo pip install pipenv
+          - checkout
+
+      jobs:
+      - name: Install and cache dependencies
+        commands:
+          - cache restore pipenv-$SEMAPHORE_GIT_BRANCH-$(checksum Pipfile.lock),pipenv-$SEMAPHORE_GIT_BRANCH,pipenv-master
+          - pipenv install --dev --deploy
+          - cache store pipenv-$SEMAPHORE_GIT_BRANCH-$(checksum Pipfile.lock) .venv
   - name: "Tests"
     task:
+      env_vars:
+        - name: PIPENV_ENV_IN_PROJECT
+          value: "true"
+      prologue:
+        commands:
+          - sudo pip install pipenv
+          - checkout
+          - cache restore pipenv-$SEMAPHORE_GIT_BRANCH-$(checksum Pipfile.lock),pipenv-$SEMAPHORE_GIT_BRANCH,pipenv-master
       jobs:
       - name: Run tests
         commands:
-          - checkout
           - coverage run tests/test_black.py
           - coveralls
