@@ -3,7 +3,12 @@ name: Black pipeline
 agent:
   machine:
     type: e1-standard-2
-    os_image: python:3.6-alpine
+    os_image: ubuntu1804
+
+    containers:
+      - name: main
+        image: python/3.6-alpine
+
 blocks:
   - name: "Install"
     task:
