@@ -1,0 +1,25 @@
+version: v1.0
+name: Black pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: "Install"
+    task:
+      env_vars:
+        - name: APP_ENV
+          value: prod
+      jobs:
+      - name: Install dependencies
+        commands:
+          - pip install coverage coveralls flake8 flake8-bugbear mypy
+          - pip install -e '.[d]'
+  - name: "Tests"
+    task:
+      jobs:
+      - name: Run tests
+        commands:
+          - checkout
+          - coverage run tests/test_black.py
+          - coveralls
