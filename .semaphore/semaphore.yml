@@ -13,8 +13,10 @@ blocks:
       jobs:
       - name: Install dependencies
         commands:
-          - sudo pip install coverage coveralls flake8 flake8-bugbear mypy
-          - sudo pip install -e '.[d]'
+          - sudo -H pip install --upgrade pip setuptools
+          - sudo -H pip install coverage coveralls flake8 flake8-bugbear mypy
+          - checkout
+          - sudo -H pip install -e '.[d]'
   - name: "Tests"
     task:
       jobs:
