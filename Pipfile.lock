@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f620e8926ed3661fb9a061289198a9a401ee674bbfc3487fd6036c6d271480f9"
+            "sha256": "fa5987d1d7527f76bef46af66691f334253a9d692f18a6f889b06af67198bfee"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -74,7 +74,6 @@
             "version": "==19.1.0"
         },
         "black": {
-            "editable": true,
             "extras": [
                 "d"
             ],
