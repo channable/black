@@ -24,4 +24,4 @@ typecheck:
 
 unit_tests:
   script:
-    - "coverage run tests/test_black.py"
+    - "pipenv run coverage run tests/test_black.py"
