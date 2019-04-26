@@ -3,6 +3,10 @@ image: python:3.6-stretch
 variables:
   PIPENV_VENV_IN_PROJECT: "true"
 
+cache:
+  paths:
+    - ".venv/"
+
 before_script:
   - pip install pipenv
   - pipenv sync --dev
