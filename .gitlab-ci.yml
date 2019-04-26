@@ -15,3 +15,7 @@ before_script:
 run_black:
   script:
     - "pipenv run black ."
+
+typecheck:
+  script:
+    - "pipenv run mypy black.py blackd.py tests/test_black.py"
