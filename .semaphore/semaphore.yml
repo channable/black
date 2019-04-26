@@ -13,7 +13,7 @@ blocks:
           value: "true"
       prologue:
         commands:
-          - sudo pip install pipenv
+          - sudo -H pip install pipenv
           - checkout
 
       jobs:
@@ -29,7 +29,7 @@ blocks:
           value: "true"
       prologue:
         commands:
-          - sudo pip install pipenv
+          - sudo -H pip install pipenv
           - checkout
           - cache restore pipenv-$SEMAPHORE_GIT_BRANCH-$(checksum Pipfile.lock),pipenv-$SEMAPHORE_GIT_BRANCH,pipenv-master
       jobs:
