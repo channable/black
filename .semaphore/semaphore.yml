@@ -15,8 +15,6 @@ blocks:
         commands:
           - sudo -H pip install --upgrade pip setuptools
           - sudo -H pip install coverage coveralls flake8 flake8-bugbear mypy
-          - checkout
-          - sudo -H pip install -e '.[d]'
   - name: "Tests"
     task:
       jobs:
