@@ -1,6 +1,6 @@
 import ast
 import asyncio
-from concurrent.futures import Executor, ProcessPoolExecutor
+from concurrent.futures import Executor, ThreadPoolExecutor
 from contextlib import contextmanager
 from datetime import datetime
 from enum import Enum
@@ -526,7 +526,7 @@ def reformat_many(
     if sys.platform == "win32":
         # Work around https://bugs.python.org/issue26903
         worker_count = min(worker_count, 61)
-    executor = ProcessPoolExecutor(max_workers=worker_count)
+    executor = ThreadPoolExecutor(max_workers=1)
     try:
         loop.run_until_complete(
             schedule_formatting(
